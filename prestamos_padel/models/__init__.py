@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import material_loans
+from . import loans_material
