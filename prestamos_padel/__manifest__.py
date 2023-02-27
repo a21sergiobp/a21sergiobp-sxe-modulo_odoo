@@ -3,10 +3,10 @@
     'name': "Padel Loans",
 
     'summary': """
-        Module to loan padel material""",
+        Modulo para prestamos de material de pádel""",
 
     'description': """
-        Module in which you can be aware of material avaliable to loan
+        Modulo no que poderás xestionar material para prestar.
     """,
 
     'author': "a21sergiobp",
