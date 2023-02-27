@@ -1,0 +1,34 @@
+<odoo>
+
+    <record id='material_menu_action' model='ir.actions.act_window'>
+        <field name="name">Entrerprise Materials</field>
+        <field name="res_model">material.loans</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Padel Loans" id="loans_base_menu"/>
+    <menuitem name="Material" id="loans_menu_root" parent="loans_base_menu" action="material_menu_action"/>
+
+    <!-- Vista en fromulario-->
+    <record id="material_loans_view_form" model="ir.ui.view">
+        <field name="name">Entrerprise Materials Form</field>
+        <field name="model">material.loans</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista en árbore-->
+    <record id="material_loans_view_tree" model="ir.ui.view">
+        <field name="name">Entrerprise Materials List</field>
+        <field name="model">material.loans</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

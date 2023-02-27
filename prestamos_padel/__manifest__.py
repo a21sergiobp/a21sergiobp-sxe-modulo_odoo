@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Prestamos Pádel",
+    'name': "Padel Loans",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Module to loan padel material""",
 
     'description': """
-        Long description of module's purpose
+        Module in which you can be aware of material avaliable to loan
     """,
 
     'author': "a21sergiobp",
@@ -25,8 +24,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'views/material_loans.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
