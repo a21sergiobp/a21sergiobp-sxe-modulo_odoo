@@ -1,0 +1,35 @@
+<odoo>
+    <record id='cliente_menu_action' model='ir.actions.act_window'>
+        <field name="name">Clientes da empresa</field>
+        <field name="res_model">loans.client</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Cliente" id="loans_cliente_menu" parent="loans_base_menu" action="cliente_menu_action"/>
+
+    <!-- Vista de fromulario-->
+    <record id="cliente_loans_view_form" model="ir.ui.view">
+        <field name="name">Fomulario clientes empresa</field>
+        <field name="model">loans.client</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="birthDate"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbore-->
+    <record id="cliente_loans_view_tree" model="ir.ui.view">
+        <field name="name">Árbore clientes empresa</field>
+        <field name="model">loans.client</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="birthDate"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

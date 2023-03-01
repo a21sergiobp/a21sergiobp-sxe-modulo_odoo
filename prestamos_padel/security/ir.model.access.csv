@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 acl_loans_material,access_loans_material,model_loans_material,base.group_user,1,1,1,1
+acl_loans_client,access_loans_client,model_loans_client,base.group_user,1,1,1,1

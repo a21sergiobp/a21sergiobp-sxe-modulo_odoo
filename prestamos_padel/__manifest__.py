@@ -26,6 +26,7 @@
         # 'security/ir.model.access.csv',
         'views/loans_material.xml',
         'security/ir.model.access.csv',
+        'views/loans_client.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

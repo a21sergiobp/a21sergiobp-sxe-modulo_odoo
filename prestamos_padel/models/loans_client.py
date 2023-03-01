@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+import logging
+from datetime import datetime, timedelta
+
+from odoo import models, fields, api
+from odoo.exceptions import UserError
+from odoo.tools.translate import _
+
+logger = logging.getLogger(__name__)
+
+
+class LoansCliente(models.Model):
+    _name = 'loans.client'
+    _description = 'Clientes inscritos'
+
+    name = fields.Char("Nome", required=True)
+    birthDate = fields.Date("Data nacemento", required=True)
