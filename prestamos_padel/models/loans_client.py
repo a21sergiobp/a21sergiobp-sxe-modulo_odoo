@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 
 
 class LoansCliente(models.Model):
+    _inherit =["res.partner"]
     _name = 'loans.client'
     _description = 'Clientes inscritos'
 
-    name = fields.Char("Nome", required=True)
     birthDate = fields.Date("Data nacemento", required=True)
