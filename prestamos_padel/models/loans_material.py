@@ -17,21 +17,21 @@ class LoansMaterial(models.Model):
     available = fields.Boolean('Dispoñible', default=False)
     description = fields.Char('Descrición')
     state = fields.Selection([
-        ('draft', 'Non dispoñible'),
+        ('indisponible', 'Non dispoñible'),
         ('disponible', 'Dispoñible'),
         ('prestado', 'Prestado'),
         ('roto', 'Roto')],
-        'State', default='draft')
+        'Estado', default='indisponible')
 
     @api.model
     def is_allowed_transition(self, old_state, new_state):
-        allowed = [('draft', 'disponible'),
+        allowed = [('indisponible', 'disponible'),
                    ('disponible', 'prestado'),
                    ('prestado', 'disponible'),
                    ('disponible', 'roto'),
                    ('prestado', 'roto'),
                    ('roto', 'disponible'),
-                   ('disponible', 'draft')]
+                   ('disponible', 'indisponible')]
         return (old_state, new_state) in allowed
 
     def change_state(self, new_state):
@@ -55,5 +55,5 @@ class LoansMaterial(models.Model):
         self.available = False
 
     def make_unavailable(self):
-        self.change_state('draft')
+        self.change_state('indisponible')
         self.available = False

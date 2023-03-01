@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Padel Loans",
+    'name': "Prestamos pádel",
 
     'summary': """
         Modulo para prestamos de material de pádel""",
@@ -25,6 +25,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/loans_material.xml',
+        'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -5,20 +5,20 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Prestamos padel" id="loans_base_menu"/>
+    <menuitem name="Prestamos pádel" id="loans_base_menu"/>
     <menuitem name="Material" id="loans_menu_root" parent="loans_base_menu" action="material_menu_action"/>
 
-    <!-- Vista en fromulario-->
+    <!-- Vista de fromulario-->
     <record id="material_loans_view_form" model="ir.ui.view">
         <field name="name">Fomulario materiais empresa</field>
         <field name="model">loans.material</field>
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="make_unavailable" string="Make Unavailable" type="object"/>
-                    <button name="make_available" string="Make Available" type="object"/>
-                    <button name="make_borrowed" string="Make Borrowed" type="object"/>
-                    <button name="make_lost" string="Make Lost" type="object"/>
+                    <button name="make_unavailable" string="Indispoñible" type="object"/>
+                    <button name="make_available" string="Dispoñible" type="object"/>
+                    <button name="make_borrowed" string="Prestado" type="object"/>
+                    <button name="make_lost" string="Roto" type="object"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <group>
@@ -29,7 +29,7 @@
         </field>
     </record>
 
-    <!-- Vista en árbore-->
+    <!-- Vista de árbore-->
     <record id="material_loans_view_tree" model="ir.ui.view">
         <field name="name">Árbore materiais empresa</field>
         <field name="model">loans.material</field>
@@ -38,6 +38,7 @@
                 <field name="name"/>
                 <field name="description"/>
                 <field name="available"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
