@@ -1,4 +1,5 @@
 <odoo>
+
     <record id='cliente_menu_action' model='ir.actions.act_window'>
         <field name="name">Clientes da empresa</field>
         <field name="res_model">res.partner</field>
@@ -7,20 +8,6 @@
 
     <menuitem name="Cliente" id="loans_cliente_menu" parent="loans_base_menu"
         action="cliente_menu_action" />
-
-    <!-- Vista de fromulario-->
-    <!-- <record id="cliente_loans_view_form" model="ir.ui.view">
-        <field name="name">Fomulario clientes empresa</field>
-        <field name="model">loans.client</field>
-        <field name="arch" type="xml">
-            <form>
-                <group>
-                    <field name="name" />
-                    <field name="birthDate" />
-                </group>
-            </form>
-        </field>
-    </record>-->
 
     <!-- Vista de árbore-->
     <record id="view_partners_tree_crm1" model="ir.ui.view">
@@ -34,6 +21,8 @@
             </tree>
         </field>
     </record>
+
+    <!-- Vista formulario-->
     <record id="view_partners_form_crm1" model="ir.ui.view">
         <field name="name">view.res.partner.form.crm.inherited1</field>
         <field name="model">res.partner</field>
@@ -48,4 +37,5 @@
             </form>
         </field>
     </record>
+
 </odoo>
