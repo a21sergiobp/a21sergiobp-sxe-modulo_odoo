@@ -17,6 +17,13 @@ class Loans(models.Model):
     date_loan = fields.Date('Data do prestamo', default=datetime.now, required=True)
     client_name = fields.Many2one('res.partner', string='Cliente', required=True)
     material_name = fields.Many2one('loans.material', string='Material', required=True)
+    expired = fields.Boolean('Vencido', compute='_compute_expired')
+    returned = fields.Boolean('Devolto', defaul=False)
+
+    state = fields.Selection([
+        ('prestado', 'Prestado'),
+        ('devolto', 'Devolto')],
+        'Estado', default='prestado')
 
     def get_datetime_four_hours_later():
         current_datetime = datetime.now()
@@ -35,4 +42,19 @@ class Loans(models.Model):
         if vals.get('id', 'New') == 'New':
             vals['id'] = self.env['ir.sequence'].next_by_code('loan.sequence') or 'Error'
         return super(Loans, self).create(vals)
+
+    # Función que pon expired a true si se pasa da entrega e ainda non o devolveu
+    @api.depends('date_loan_finish', 'returned')
+    def _compute_expired(self):
+        for record in self:
+            if not record.returned and record.date_loan_finish <= fields.Datetime.now():
+                record.expired = True
+            else:
+                record.expired = False
+    
+    def return_material(self):
+        self.returned = True
+        self.state='devolto'
+
+    
 

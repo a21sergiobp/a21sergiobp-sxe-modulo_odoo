@@ -21,6 +21,8 @@
                 <field name="material_name" />
                 <field name="date_loan" />
                 <field name="date_loan_finish" />
+                <field name="expired"/>
+                <field name="returned"/>
             </tree>
         </field>
     </record>
@@ -31,6 +33,10 @@
         <field name="model">loans.loan</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="return_material" string="Devolver" type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
                 <group>
                     <field name="client_name" />
                     <field name="material_name" />
