@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='loan_menu_action' model='ir.actions.act_window'>
+        <field name="name">Prestamos de material</field>
+        <field name="res_model">loans.loan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Prestamo" id="loans_loan_menu" parent="loans_base_menu"
+        action="loan_menu_action" />
+
+    <!-- Vista de árbore-->
+    <record id="view_loan_tree" model="ir.ui.view">
+        <field name="name">view.loan.tree</field>
+        <field name="model">loans.loan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date_loan" />
+                <field name="client_name" />
+                <field name="material_name" />
+                 <field name="date_loan_finish" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista formulario-->
+    <record id="view_loan_form" model="ir.ui.view">
+        <field name="name">view.loan.form</field>
+        <field name="model">loans.loan</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date_loan" />
+                    <field name="client_name" />
+                    <field name="material_name" />
+                    <field name="date_loan_finish" />
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>
