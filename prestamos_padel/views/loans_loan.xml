@@ -16,10 +16,10 @@
         <field name="model">loans.loan</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="date_loan" />
                 <field name="client_name" />
                 <field name="material_name" />
-                 <field name="date_loan_finish" />
+                <field name="date_loan" />
+                <field name="date_loan_finish" />
             </tree>
         </field>
     </record>
@@ -31,9 +31,9 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="date_loan" />
                     <field name="client_name" />
                     <field name="material_name" />
+                    <field name="date_loan" />
                     <field name="date_loan_finish" />
                 </group>
             </form>

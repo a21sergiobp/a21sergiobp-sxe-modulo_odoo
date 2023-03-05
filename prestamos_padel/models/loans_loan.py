@@ -14,8 +14,6 @@ class Loans(models.Model):
     _description = 'Préstamos'
 
     date_loan = fields.Date('Data do prestamo', default=datetime.now, required=True)
-    # date_loan_finish = fields.Date(string='Vencemento', default=lambda self: datetime.now() + timedelta(hours=4).date())
-    # date_loan_finish = fields.Date('Data de vencemento', default=(datetime.now() + timedelta(hours=4)))
     client_name = fields.Many2one('res.partner', string='Cliente', required=True)
     material_name = fields.Many2one('loans.material', string='Material', required=True)
 
@@ -28,6 +26,6 @@ class Loans(models.Model):
         current_datetime = datetime.now()
         return current_datetime
     
-    date_loan_finish = fields.Date('Data de vencemento', default=get_datetime_four_hours_later(), required=True)
-    date_loan = fields.Date('Data do prestamo', default=get_date_time(), required=True)
+    date_loan_finish = fields.Datetime('Data de vencemento', default=get_datetime_four_hours_later(), required=True)
+    date_loan = fields.Datetime('Data do prestamo', default=get_date_time(), required=True)
 
