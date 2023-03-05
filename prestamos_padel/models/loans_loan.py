@@ -17,7 +17,7 @@ class Loans(models.Model):
     date_loan = fields.Date('Data do prestamo', default=datetime.now, required=True)
     client_name = fields.Many2one('res.partner', string='Cliente', required=True)
     material_name = fields.Many2one('loans.material', string='Material', required=True)
-    expired = fields.Boolean('Vencido', compute='_compute_expired')
+    expired = fields.Boolean('Vencido', compute='_compute_expired', default=False)
     returned = fields.Boolean('Devolto', defaul=False)
 
     state = fields.Selection([
@@ -53,8 +53,27 @@ class Loans(models.Model):
                 record.expired = False
     
     def return_material(self):
+        self.expired=False
         self.returned = True
         self.state='devolto'
 
+    #Método para comprobar si o cliente ten prestamos vencidos
+    #@api.constrains('client_name')
+    #def _check_customer_loan(self):
+    #    for loan in self:
+    #        if loan.client_name:
+    #            if loan.expired:
+    #                raise models.ValidationError(f'El cliente {loan.client_name.name} tiene préstamos vencidos.')
     
-
+    @api.model
+    def create(self, vals):
+        # Comprobar que el cliente no tiene préstamos vencidos
+        client_id = vals.get('client_name')
+        if client_id:
+            domain = [('client_name', '=', client_id), ('expired', '=', True)]
+            expired_loans = self.search(domain)
+            if expired_loans:
+                raise UserError(_('El cliente tiene préstamos vencidos.'))
+        
+        # Crea el préstamo si no hay errores
+        return super(Loans, self).create(vals)
