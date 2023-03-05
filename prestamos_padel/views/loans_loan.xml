@@ -16,6 +16,7 @@
         <field name="model">loans.loan</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="id"/>
                 <field name="client_name" />
                 <field name="material_name" />
                 <field name="date_loan" />

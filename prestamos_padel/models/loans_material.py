@@ -16,6 +16,15 @@ class LoansMaterial(models.Model):
     name = fields.Char('Nome', required=True)
     available = fields.Boolean('Dispoñible', default=False)
     description = fields.Char('Descrición')
+    id = fields.Integer(string='ID', readonly=True)
+
+
+    @api.model
+    def create(self, vals):
+        if vals.get('id', 'New') == 'New':
+            vals['id'] = self.env['ir.sequence'].next_by_code('loan.sequence') or 'Error'
+        return super(LoansMaterial, self).create(vals)
+
     state = fields.Selection([
         ('indisponible', 'Non dispoñible'),
         ('disponible', 'Dispoñible'),

@@ -16,6 +16,7 @@
         <field name="inherit_id" ref="base.view_partner_tree" />
         <field name="arch" type="xml">
             <tree>
+                <field name="id"/>
                 <field name="name" />
                 <field name="birthDate" />
             </tree>

@@ -15,6 +15,7 @@ class LoansCliente(models.Model):
     _inherit ='res.partner'
     _description = 'Clientes inscritos'
 
+    id = fields.Integer(string='ID', readonly=True)
     birthDate = fields.Date("Data nacemento", required=True)
 
     @api.model
@@ -26,3 +27,9 @@ class LoansCliente(models.Model):
                 node.set('invisible', '1')
             res['arch'] = etree.tostring(doc)
         return res
+
+    @api.model
+    def create(self, vals):
+        if vals.get('id', 'New') == 'New':
+            vals['id'] = self.env['ir.sequence'].next_by_code('loan.sequence') or 'Error'
+        return super(LoansCliente, self).create(vals)
