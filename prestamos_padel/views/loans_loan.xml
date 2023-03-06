@@ -21,7 +21,6 @@
                 <field name="material_name" />
                 <field name="date_loan" />
                 <field name="date_loan_finish" />
-                <field name="expired"/>
                 <field name="returned"/>
             </tree>
         </field>
