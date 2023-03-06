@@ -35,10 +35,7 @@ class LoansMaterial(models.Model):
     @api.model
     def is_allowed_transition(self, old_state, new_state):
         allowed = [('indisponible', 'disponible'),
-                   ('disponible', 'prestado'),
-                   ('prestado', 'disponible'),
                    ('disponible', 'roto'),
-                   ('prestado', 'roto'),
                    ('roto', 'disponible'),
                    ('disponible', 'indisponible')]
         return (old_state, new_state) in allowed

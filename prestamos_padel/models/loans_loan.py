@@ -56,17 +56,16 @@ class Loans(models.Model):
     @api.model
     def create(self, vals):
         new_record = super(Loans, self).create(vals)
-        related_record = new_record.material_name
-        related_record.write({'state': 'prestado'})
-        related_record.write({'available': False})
+        material = new_record.material_name
+        #cliente = new_record.client_name
+        if material.available==False:
+            raise UserError(_('Ese material non está dispoñible.'))
+        #else:
+        #    domain=[('client_name', '=', cliente), ('expired', '=', True)]
+        #    expired_loans=self.search(domain)
+        #    if expired_loans:
+        #        raise UserError(_('O cliente ten prestamos vencidos.'))
+        #    else:
+        material.write({'state': 'prestado'})
+        material.write({'available': False})
         return new_record
-
-    #@api.model
-    #def create(self, vals):
-    #    client_id = vals.get('client_name')
-    #    if client_id:
-    #        domain = [('client_name', '=', client_id), ('expired', '=', True)]
-    #        expired_loans = self.search(domain)
-    #        if expired_loans:
-    #            raise UserError(_('O cliente ten préstamos vencidos.'))
-    #    return super(Loans, self).create(vals)
