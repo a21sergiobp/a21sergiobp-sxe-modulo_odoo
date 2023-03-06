@@ -59,12 +59,12 @@
             <xpath expr="//form/sheet/div[@name='button_box']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <form>
+            <!-- <form>
                 <group>
                     <field name="name" />
                     <field name="birthDate" />
                 </group>
-            </form>
+            </form>-->
         </field>
     </record>
 </odoo>
