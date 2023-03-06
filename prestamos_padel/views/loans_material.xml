@@ -2,11 +2,12 @@
     <record id='material_menu_action' model='ir.actions.act_window'>
         <field name="name">Materiais da empresa</field>
         <field name="res_model">loans.material</field>
-        <field name="view_mode">kanban,form</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Prestamos pádel" id="loans_base_menu"/>
-    <menuitem name="Material" id="loans_menu_root" parent="loans_base_menu" action="material_menu_action"/>
+    <menuitem name="Prestamos pádel" id="loans_base_menu" />
+    <menuitem name="Material" id="loans_menu_root" parent="loans_base_menu"
+        action="material_menu_action" />
 
     <!-- Vista de fromulario-->
     <record id="material_loans_view_form" model="ir.ui.view">
@@ -15,47 +16,21 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="make_unavailable" string="Indispoñible" type="object"/>
-                    <button name="make_available" string="Dispoñible" type="object"/>
-                    <button name="make_borrowed" string="Prestado" type="object"/>
-                    <button name="make_lost" string="Roto" type="object"/>
-                    <field name="state" widget="statusbar"/>
+                    <button name="make_unavailable" string="Indispoñible" type="object" />
+                    <button name="make_available" string="Dispoñible" type="object" />
+                    <button name="make_borrowed" string="Prestado" type="object" />
+                    <button name="make_lost" string="Roto" type="object" />
+                    <field name="state" widget="statusbar" />
                 </header>
                 <group>
-                    <field name="name"/>
-                    <field name="description"/>
+                    <field name="name" />
+                    <field name="description" />
                 </group>
             </form>
         </field>
     </record>
-<!--
-    <record id="view_material_kanban" model="ir.ui.view">
-        <field name="name">Material Kanban</field>
-        <field name="model">loans.material</field>
-        <field name="arch" type="xml">
-            <kanban>
-                <field name="state"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
-                                <strong><field name="name"/></strong>
-                                <div class="oe_kanban_content">
-                                    <p><field name="description"/></p>
-                                </div>
-                            </div>
-                            <div class="oe_kanban_footer">
-                                <div class="oe_kanban_tags">
-                                    <field name="state" widget="statinfo"/>
-                                </div>
-                            </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>-->
-
+    
+    <!--Vista kanban-->
     <!--
     <record id="view_material_kanban" model="ir.ui.view">
         <field name="name">material.kanban</field>
@@ -75,6 +50,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="oe_kanban_primary_right">
+                                    <button type="button" class="oe_kanban_action oe_kanban_edit">
+                                        Edit
+                                    </button>
+                                </div>
                                 <div class="oe_kanban_card_body">
                                     <div class="oe_kanban_content">
                                         <field name="description"/>
@@ -89,35 +69,8 @@
         </field>
     </record>-->
 
-    <record id="view_material_kanban" model="ir.ui.view">
-        <field name="name">material.kanban</field>
-        <field name="model">loans.material</field>
-        <field name="arch" type="xml">
-            <kanban>
-                <field name="state"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_content">
-                            <div class="oe_kanban_card_header">
-                                <div class="oe_kanban_record_title">
-                                    <field name="name"/>
-                                </div>
-                            </div>
-                            <div class="oe_kanban_card_body">
-                                <field name="description"/>
-                            </div>
-                        </div>
-                        <div class="oe_kanban_bottom_right">
-                            <a type="open" name="%(material.material_loans_view_form)d" string="Editar"/>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
-
     <!-- Vista de árbore-->
-    <!-- 
+    
     <record id="material_loans_view_tree" model="ir.ui.view">
         <field name="name">Árbore materiais empresa</field>
         <field name="model">loans.material</field>
@@ -130,5 +83,5 @@
                 <field name="state"/>
             </tree>
         </field>
-    </record>-->
+    </record>
 </odoo>
