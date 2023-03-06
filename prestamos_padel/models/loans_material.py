@@ -15,7 +15,7 @@ class LoansMaterial(models.Model):
 
     name = fields.Char('Nome', required=True)
     available = fields.Boolean('Dispoñible', default=False)
-    description = fields.Char('Descrición')
+    description = fields.Char('Descrición', required=True)
     id = fields.Integer(string='ID', readonly=True)
 
 

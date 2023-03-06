@@ -37,12 +37,6 @@ class Loans(models.Model):
     date_loan_finish = fields.Datetime('Data de vencemento', default=get_datetime_four_hours_later(), required=True)
     date_loan = fields.Datetime('Data do prestamo', default=get_date_time(), required=True)
 
-    #@api.model
-    #def create(self, vals):
-    #    if vals.get('id', 'New') == 'New':
-    #        vals['id'] = self.env['ir.sequence'].next_by_code('loan.sequence') or 'Error'
-    #    return super(Loans, self).create(vals)
-
     # Función que pon expired a true si se pasa da entrega e ainda non o devolveu
     @api.depends('date_loan_finish', 'returned')
     def _compute_expired(self):
@@ -56,13 +50,23 @@ class Loans(models.Model):
         self.expired=False
         self.returned = True
         self.state='devolto'
-    
+        self.material_name.write({'state': 'disponible'})
+        self.material_name.write({'available': True})
+
     @api.model
     def create(self, vals):
-        client_id = vals.get('client_name')
-        if client_id:
-            domain = [('client_name', '=', client_id), ('expired', '=', True)]
-            expired_loans = self.search(domain)
-            if expired_loans:
-                raise UserError(_('O cliente ten préstamos vencidos.'))
-        return super(Loans, self).create(vals)
+        new_record = super(Loans, self).create(vals)
+        related_record = new_record.material_name
+        related_record.write({'state': 'prestado'})
+        related_record.write({'available': False})
+        return new_record
+
+    #@api.model
+    #def create(self, vals):
+    #    client_id = vals.get('client_name')
+    #    if client_id:
+    #        domain = [('client_name', '=', client_id), ('expired', '=', True)]
+    #        expired_loans = self.search(domain)
+    #        if expired_loans:
+    #            raise UserError(_('O cliente ten préstamos vencidos.'))
+    #    return super(Loans, self).create(vals)
