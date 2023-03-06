@@ -56,7 +56,7 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field eval="1" name="priority" />
         <field name="arch" type="xml">
-            <xpath expr="//form" position="attributes">
+            <xpath expr="//form/sheet/div[@name='button_box']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
             <form>
