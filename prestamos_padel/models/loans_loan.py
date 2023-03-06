@@ -34,7 +34,7 @@ class Loans(models.Model):
         current_datetime = datetime.now()
         return current_datetime
     
-    date_loan_finish = fields.Datetime('Data de vencemento', default=get_datetime_four_hours_later(), required=True)
+    date_loan_finish = fields.Datetime('Data de devolucion')
     date_loan = fields.Datetime('Data do prestamo', default=get_date_time(), required=True)
 
     # Función que pon expired a true si se pasa da entrega e ainda non o devolveu
@@ -47,11 +47,15 @@ class Loans(models.Model):
                 record.expired = False
     
     def return_material(self):
-        self.expired=False
-        self.returned = True
-        self.state='devolto'
-        self.material_name.write({'state': 'disponible'})
-        self.material_name.write({'available': True})
+        if self.returned==True:
+            raise UserError(_('Non se pode devolver, xa está devolto.'))
+        else:
+            self.expired=False
+            self.returned = True
+            self.state='devolto'
+            self.date_loan_finish=datetime.now()
+            self.material_name.write({'state': 'disponible'})
+            self.material_name.write({'available': True})
 
     @api.model
     def create(self, vals):
