@@ -4,6 +4,8 @@
         <field name="name">Clientes da empresa</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_partners_tree_crm1"/>
+        <field name="view_ids" eval="[(0, 0, {'view_id': ref('view_partners_tree_crm1'), 'view_mode': 'tree'}), (0, 0, {'view_id': ref('view_partners_form_crm1'), 'view_mode': 'form'})]"/>
     </record>
 
     <menuitem name="Cliente" id="loans_cliente_menu" parent="loans_base_menu"
@@ -53,18 +55,13 @@
     <record id="view_partners_form_crm1" model="ir.ui.view">
         <field name="name">view.res.partner.form.crm.inherited1</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form" />
-        <field eval="1" name="priority" />
         <field name="arch" type="xml">
-            <xpath expr="//form/sheet/div[@name='button_box']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <!-- <form>
+            <form>
                 <group>
                     <field name="name" />
                     <field name="birthDate" />
                 </group>
-            </form>-->
+            </form>
         </field>
     </record>
 </odoo>
