@@ -18,6 +18,7 @@ class Loans(models.Model):
     client_name = fields.Many2one('res.partner', string='Cliente', required=True)
     material_name = fields.Many2one('loans.material', string='Material', required=True)
     returned = fields.Boolean('Devolto', defaul=False)
+    date_loan_finish = fields.Datetime('Data de devolucion')
 
     state = fields.Selection([
         ('prestado', 'Prestado'),
@@ -28,7 +29,6 @@ class Loans(models.Model):
         current_datetime = datetime.now()
         return current_datetime
     
-    date_loan_finish = fields.Datetime('Data de devolucion')
     date_loan = fields.Datetime('Data do prestamo', default=get_date_time(), required=True)
     
     #método que devolve o material, cambia a data de devolución
