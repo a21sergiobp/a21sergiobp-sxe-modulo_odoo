@@ -31,7 +31,7 @@ class LoansMaterial(models.Model):
         ('disponible', 'Dispoñible'),
         ('prestado', 'Prestado'),
         ('roto', 'Roto')],
-        'Estado', default='indisponible')
+        'Estado', default='disponible')
 
     @api.model
     def is_allowed_transition(self, old_state, new_state):
