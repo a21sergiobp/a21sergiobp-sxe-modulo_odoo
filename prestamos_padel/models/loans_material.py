@@ -42,11 +42,11 @@ class LoansMaterial(models.Model):
         return (old_state, new_state) in allowed
 
     def change_state(self, new_state):
-        for book in self:
-            if book.is_allowed_transition(book.state, new_state):
-                book.state = new_state
+        for material in self:
+            if material.is_allowed_transition(material.state, new_state):
+                material.state = new_state
             else:
-                message = _('Mover de %s a %s non está permitido') % (book.state, new_state)
+                message = _('Mover de %s a %s non está permitido') % (material.state, new_state)
                 raise UserError(message)
 
     def make_available(self):
