@@ -19,7 +19,7 @@ class LoansMaterial(models.Model):
     id = fields.Integer(string='ID', readonly=True)
     loans = fields.One2many('loans.loan', 'material_name',string='Prestamos')
 
-
+    #crea un id único para cada rexistro
     @api.model
     def create(self, vals):
         if vals.get('id', 'New') == 'New':

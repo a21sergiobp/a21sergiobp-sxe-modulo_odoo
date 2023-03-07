@@ -14,7 +14,7 @@ class Loans(models.Model):
 
     id = fields.Integer(string='ID', readonly=True)
     date_loan = fields.Date('Data do prestamo', default=datetime.now, required=True)
-    client_name = fields.Many2one('res.partner', string='Cliente', required=True)
+    client_name = fields.Many2one('loans.client', string='Cliente', required=True)
     material_name = fields.Many2one('loans.material', string='Material', required=True)
     returned = fields.Boolean('Devolto', defaul=False)
     date_loan_finish = fields.Datetime('Data de devolucion')

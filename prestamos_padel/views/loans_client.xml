@@ -2,7 +2,7 @@
 
     <record id='cliente_menu_action' model='ir.actions.act_window'>
         <field name="name">Clientes da empresa</field>
-        <field name="res_model">res.partner</field>
+        <field name="res_model">loans.client</field>
         <field name="view_mode">tree,form</field>
     </record>
 
@@ -10,11 +10,21 @@
         action="cliente_menu_action" />
 
     <!-- Vista de árbore-->
-    <record id="view_partners_tree_crm1" model="ir.ui.view">
+    <record id="view_clients_tree" model="ir.ui.view">
         <field name="name">view.res.partner.tree.crm.inherited1</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="model">loans.client</field>
+        <!--<field name="inherit_id" ref="base.view_partner_tree" />-->
         <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="dni"/>
+                <field name="name"/>
+                <field name="birthDate"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+
+            <!--
             <xpath expr="//tree/field[@name='city']" position="attributes">
                 <attribute name="string">Cidade</attribute>
             </xpath>
@@ -45,14 +55,14 @@
             <xpath expr="//tree/field[@name='phone']" position="before">
                 <field name="id" />
                 <field name="birthDate" />
-            </xpath>
+            </xpath>-->
         </field>
     </record>
 
     <!-- Vista formulario-->
-    <record id="view_partners_form_crm1" model="ir.ui.view">
+    <!--<record id="view_clients_form" model="ir.ui.view">
         <field name="name">view.res.partner.form.crm.inherited1</field>
-        <field name="model">res.partner</field>
+        <field name="model">loans.client</field>
         <field name="arch" type="xml">
             <form>
                 <group>
@@ -61,5 +71,5 @@
                 </group>
             </form>
         </field>
-    </record>
+    </record>-->
 </odoo>
