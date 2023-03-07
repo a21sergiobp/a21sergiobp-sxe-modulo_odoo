@@ -25,7 +25,7 @@
                 <group>
                     <field name="name" />
                     <field name="description" />
-                    <field name="loans" readonly="True"/>
+                    <field name="loans"/>
                 </group>
             </form>
         </field>

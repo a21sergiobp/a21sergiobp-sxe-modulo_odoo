@@ -17,7 +17,7 @@ class LoansMaterial(models.Model):
     available = fields.Boolean('Dispoñible', default=True)
     description = fields.Char('Descrición', required=True)
     id = fields.Integer(string='ID', readonly=True)
-    loans = fields.One2many('loans.loan', 'material_name',string='Prestamos')
+    loans = fields.One2many('loans.loan', 'material_name',string='Prestamos', readonly=True)
 
     #crea un id único para cada rexistro
     @api.model
