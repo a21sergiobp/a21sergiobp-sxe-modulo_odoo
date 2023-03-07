@@ -16,7 +16,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="make_unavailable" string="Indispoñible" type="object" />
+                    <button name="make_unavailable" string="Non dispoñible" type="object" />
                     <button name="make_available" string="Dispoñible" type="object" />
                     <button name="make_borrowed" string="Prestado" type="object" />
                     <button name="make_lost" string="Roto" type="object" />
