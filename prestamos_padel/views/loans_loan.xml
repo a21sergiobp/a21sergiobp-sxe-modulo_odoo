@@ -34,6 +34,7 @@
             <form>
                 <header>
                     <button name="return_material" string="Devolver" type="object"/>
+                    <button name="action_delete_record" string="Borrar Rexistro" type="object" class="btn-danger"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <group>

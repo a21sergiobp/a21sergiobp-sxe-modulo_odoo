@@ -4,8 +4,6 @@
         <field name="name">Clientes da empresa</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_partners_tree_crm1"/>
-        <field name="view_ids" eval="[(0, 0, {'view_id': ref('view_partners_tree_crm1'), 'view_mode': 'tree'}), (0, 0, {'view_id': ref('view_partners_form_crm1'), 'view_mode': 'form'})]"/>
     </record>
 
     <menuitem name="Cliente" id="loans_cliente_menu" parent="loans_base_menu"
