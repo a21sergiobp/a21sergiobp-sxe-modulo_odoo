@@ -25,6 +25,7 @@
                 <group>
                     <field name="name" />
                     <field name="description" />
+                    <field name="loans"/>
                 </group>
             </form>
         </field>

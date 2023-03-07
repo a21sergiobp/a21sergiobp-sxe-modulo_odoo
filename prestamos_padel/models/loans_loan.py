@@ -3,7 +3,7 @@ import logging
 from datetime import datetime, timedelta
 
 from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, Warning
 from odoo.tools.translate import _
 
 logger = logging.getLogger(__name__)
@@ -56,16 +56,10 @@ class Loans(models.Model):
             material.write({'available': False})
         return new_record
     
-    #Función que borra un rexistro e volve a vista de árbore
+    #Función que borra un rexistro
     def action_delete_record(self):
         if self.returned==False:
             raise UserError(_('Non se pode borrar un rexistro non devolto'))
         else:
             self.ensure_one()
             self.unlink()
-            return {
-                'type': 'ir.actions.act_window',
-                'res_model': 'loans.loan',
-                'view_mode': 'tree',
-                'target': 'current',
-            }

@@ -17,6 +17,7 @@ class LoansMaterial(models.Model):
     available = fields.Boolean('Dispoñible', default=False)
     description = fields.Char('Descrición', required=True)
     id = fields.Integer(string='ID', readonly=True)
+    loans = fields.One2many('loans.loan', 'material_name',string='Prestamos')
 
 
     @api.model
