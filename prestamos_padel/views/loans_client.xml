@@ -9,6 +9,7 @@
     <menuitem name="Cliente" id="loans_cliente_menu" parent="loans_base_menu"
         action="cliente_menu_action" />
 
+    <!-- Vista de árbore-->
     <record id="view_client_tree" model="ir.ui.view">
         <field name="name">view.client.tree</field>
         <field name="model">loans.client</field>
@@ -16,10 +17,14 @@
             <tree>
                 <field name="name" />
                 <field name="dni" />
+                <field name="birthDate"/>
+                <field name="email"/>
+                <field name="phone"/>
             </tree>
         </field>
     </record>
 
+    <!-- Vista formulario-->
     <record id="view_client_form" model="ir.ui.view">
         <field name="name">view.client.form</field>
         <field name="model">loans.client</field>
@@ -29,87 +34,11 @@
                     <field name="name" editable="top"/>
                     <field name="dni" />
                     <field name="birthDate"/>
+                    <field name="email"/>
+                    <field name="phone"/>
                     <field name="loans" />
                 </group>
             </form>
         </field>
     </record>
-    <!--
-    <record id='cliente_menu_action' model='ir.actions.act_window'>
-        <field name="name">Clientes da empresa</field>
-        <field name="res_model">res.partner</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem name="Cliente" id="loans_cliente_menu" parent="loans_base_menu"
-        action="cliente_menu_action" />
-
-    <record id="view_clients_tree" model="ir.ui.view">
-        <field name="name">view.clients.tree</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_tree" />
-        <field name="priority" eval="5" />
-        <field name="arch" type="xml">
-            <tree>
-                <field name="id" />
-                <field name="dni" />
-                <field name="name" />
-                <field name="birthDate" />
-                <field name="email" />
-                <field name="phone" />
-            </tree>
-
-            <xpath expr="//tree/field[@name='city']" position="attributes">
-                <attribute name="string">Cidade</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='category_id']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='company_id']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='is_company']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='country_id']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='category_id']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='vat']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='user_id']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='state_id']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//tree/field[@name='phone']" position="before">
-                <field name="id" />
-                <field name="birthDate" />
-            </xpath>
-        </field>
-    </record>
-
-    <record
-        id="view_clients_form" model="ir.ui.view">
-        <field name="name">view.clients.form</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form" />
-        <field name="arch" type="xml">
-            <xpath expr="//form" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <form>
-                <sheet>
-                    <group>
-                        <field name="name" />
-                        <field name="dni" />
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>-->
 </odoo>

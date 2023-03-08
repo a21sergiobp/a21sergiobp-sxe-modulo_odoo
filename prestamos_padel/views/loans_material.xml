@@ -71,7 +71,6 @@
     </record>-->
 
     <!-- Vista de árbore-->
-    
     <record id="material_loans_view_tree" model="ir.ui.view">
         <field name="name">Árbore materiais empresa</field>
         <field name="model">loans.material</field>
