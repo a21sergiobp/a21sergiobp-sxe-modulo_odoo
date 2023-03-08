@@ -33,9 +33,6 @@ class LoansCliente(models.Model):
 
     @api.model
     def create(self, vals):
-        # Crear un registro en res.partner
         partner = self.env['res.partner'].create({'name': vals.get('name')})
-        # Establecer el campo partner_id de loans.client en el nuevo registro de res.partner
         vals['partner_id'] = partner.id
-        # Crear un registro en loans.client y establecer el campo name
         return super(LoansCliente, self).create(vals)
