@@ -12,11 +12,12 @@ logger = logging.getLogger(__name__)
 class LoansCliente(models.Model):
     _name = 'loans.client'
     _inherits = {'res.partner': 'partner_id'}
+    #_inherit='res.partner'
     _description = 'Clientes inscritos'
 
-    partner_id = fields.Many2one('res.partner', string='Partner')
-    id = fields.Integer(string='ID', readonly=True)
-    name = fields.Char('Nome',related='partner_id.name', required=True)
+    partner_id = fields.Many2one('res.partner', string='Partner',  ondelete='cascade')
+    #id = fields.Integer(string='ID', readonly=True)
+    name = fields.Char('Nome', required=True)
     dni = fields.Char('DNI', required=True)
     birthDate = fields.Date("Data nacemento", required=True)
     #email = fields.Char('E-mail')
@@ -24,8 +25,17 @@ class LoansCliente(models.Model):
     loans = fields.One2many('loans.loan', 'client_name',string='Prestamos', readonly=True)
 
     #crea un id único para cada rexistro
+    #@api.model
+    #def create(self, vals):
+    #    if vals.get('id', 'New') == 'New':
+    #        vals['id'] = self.env['ir.sequence'].next_by_code('loan.sequence') or 'Error'
+    #    return super(LoansCliente, self).create(vals)
+
     @api.model
     def create(self, vals):
-        if vals.get('id', 'New') == 'New':
-            vals['id'] = self.env['ir.sequence'].next_by_code('loan.sequence') or 'Error'
+        # Crear un registro en res.partner
+        partner = self.env['res.partner'].create({'name': vals.get('name')})
+        # Establecer el campo partner_id de loans.client en el nuevo registro de res.partner
+        vals['partner_id'] = partner.id
+        # Crear un registro en loans.client y establecer el campo name
         return super(LoansCliente, self).create(vals)

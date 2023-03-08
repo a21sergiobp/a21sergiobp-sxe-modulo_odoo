@@ -26,31 +26,39 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="name" />
+                    <field name="name" editable="top"/>
                     <field name="dni" />
+                    <field name="birthDate"/>
                     <field name="loans" />
                 </group>
             </form>
         </field>
     </record>
-    <!-- Vista de árbore-->
-    <!-- 
+    <!--
+    <record id='cliente_menu_action' model='ir.actions.act_window'>
+        <field name="name">Clientes da empresa</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Cliente" id="loans_cliente_menu" parent="loans_base_menu"
+        action="cliente_menu_action" />
+
     <record id="view_clients_tree" model="ir.ui.view">
-        <field name="name">view.res.partner.tree.crm.inherited1</field>
+        <field name="name">view.clients.tree</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_tree"/>
-        <field name="priority" eval="5"/>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="priority" eval="5" />
         <field name="arch" type="xml">
             <tree>
-                <field name="id"/>
-                <field name="dni"/>
-                <field name="name"/>
-                <field name="birthDate"/>
-                <field name="email"/>
-                <field name="phone"/>
-            </tree>-->
+                <field name="id" />
+                <field name="dni" />
+                <field name="name" />
+                <field name="birthDate" />
+                <field name="email" />
+                <field name="phone" />
+            </tree>
 
-    <!--
             <xpath expr="//tree/field[@name='city']" position="attributes">
                 <attribute name="string">Cidade</attribute>
             </xpath>
@@ -81,43 +89,27 @@
             <xpath expr="//tree/field[@name='phone']" position="before">
                 <field name="id" />
                 <field name="birthDate" />
-            </xpath>-->
-    <!--</field>-->
-    <!--
-        <field name="priority" eval="5"/>
-        <field name="inherit_id" ref="base.view_partner_form" delete="True"/>-->
-    <!--</record>-->
+            </xpath>
+        </field>
+    </record>
 
-    <!-- Vista formulario-->
-    <!--<record
-    id="prestamos_padel-view_clients_form" model="ir.ui.view">
-        <field name="name">view.res.partner.form.crm.inherited1</field>
-        <field name="model">res.partner</field>-->
-    <!--<field
-    name="inherit_id" ref="base.view_partner_form"/>-->
-    <!--<field
-    name="arch" type="xml">
+    <record
+        id="view_clients_form" model="ir.ui.view">
+        <field name="name">view.clients.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="dni"/>
+                        <field name="name" />
+                        <field name="dni" />
                     </group>
-                </sheet>-->
-    <!--<xpath
-    expr="//form/sheet/div/field[@name='company_type']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>-->
-    <!--
-                <group>
-                    <field name="name" />
-                    <field name="birthDate" />
-                </group>-->
-    <!-- </form>
-        </field>-->
-    <!--<field
-    name="priority" eval="0"/>-->
-    <!--<field
-    name="inherit_id" ref="base.view_partner_form" delete="True"/>-->
-    <!--</record>-->
+                </sheet>
+            </form>
+        </field>
+    </record>-->
 </odoo>
