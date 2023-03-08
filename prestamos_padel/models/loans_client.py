@@ -9,18 +9,18 @@ from lxml import etree
 
 logger = logging.getLogger(__name__)
 
-
 class LoansCliente(models.Model):
     _name = 'loans.client'
-    #_inherit ='res.partner'
+    _inherits = {'res.partner': 'partner_id'}
     _description = 'Clientes inscritos'
 
+    partner_id = fields.Many2one('res.partner', string='Partner')
     id = fields.Integer(string='ID', readonly=True)
-    name = fields.Char('Nome', required=True)
+    name = fields.Char('Nome',related='partner_id.name', required=True)
     dni = fields.Char('DNI', required=True)
     birthDate = fields.Date("Data nacemento", required=True)
-    email = fields.Char('E-mail')
-    phone = fields.Char('Teléfono', required=True)
+    #email = fields.Char('E-mail')
+    #phone = fields.Char('Teléfono', required=True)
     loans = fields.One2many('loans.loan', 'client_name',string='Prestamos', readonly=True)
 
     #crea un id único para cada rexistro
