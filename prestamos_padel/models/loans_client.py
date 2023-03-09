@@ -3,6 +3,7 @@ import logging
 
 from odoo import models, fields, api
 from odoo.tools.translate import _
+from datetime import date
 
 logger = logging.getLogger(__name__)
 
@@ -62,4 +63,4 @@ class LoansCliente(models.Model):
                 partner_vals['phone'] = vals['phone']
             self.partner_id.write(partner_vals)
         return result
-    
+
