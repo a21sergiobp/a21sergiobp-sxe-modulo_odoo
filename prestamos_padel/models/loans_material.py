@@ -63,3 +63,8 @@ class LoansMaterial(models.Model):
     def make_unavailable(self):
         self.change_state('indisponible')
         self.available = False
+    
+    #Función que borra un rexistro
+    def delete_material(self):
+        self.ensure_one()
+        self.unlink()

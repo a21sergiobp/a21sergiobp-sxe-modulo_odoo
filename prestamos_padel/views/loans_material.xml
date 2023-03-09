@@ -20,6 +20,7 @@
                     <button name="make_available" string="Dispoñible" type="object" />
                     <button name="make_borrowed" string="Prestado" type="object" />
                     <button name="make_lost" string="Roto" type="object" />
+                    <button name="delete_material" string="Borrar Rexistro" type="object" class="btn-danger"/>
                     <field name="state" widget="statusbar" />
                 </header>
                 <group>
