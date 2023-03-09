@@ -13,7 +13,6 @@ class Loans(models.Model):
     _description = 'Préstamos'
 
     id = fields.Integer(string='ID', readonly=True)
-    date_loan = fields.Date('Data do prestamo', default=datetime.now, required=True)
     client_name = fields.Many2one('loans.client', string='Cliente', required=True)
     material_name = fields.Many2one('loans.material', string='Material', required=True)
     returned = fields.Boolean('Devolto', defaul=False)
@@ -57,7 +56,7 @@ class Loans(models.Model):
         return new_record
     
     #Función que borra un rexistro
-    def action_delete_record(self):
+    def delete_loan(self):
         if self.returned==False:
             raise UserError(_('Non se pode borrar un rexistro non devolto'))
         else:

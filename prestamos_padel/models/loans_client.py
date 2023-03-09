@@ -12,14 +12,13 @@ class LoansCliente(models.Model):
     _description = 'Clientes inscritos'
 
     partner_id = fields.Many2one('res.partner', string='Partner',  ondelete='cascade')
-    #id = fields.Integer(string='ID', readonly=True)
     name = fields.Char(related='partner_id.name', string='Nome', required=True, readonly=False)
     dni = fields.Char('DNI', required=True)
     birthDate = fields.Date("Data nacemento", required=True)
     loans = fields.One2many('loans.loan', 'client_name',string='Prestamos', readonly=True)
     email = fields.Char(related='partner_id.email', string='Correo electrónico', readonly=False)
     phone = fields.Char(related='partner_id.phone', string='Teléfono', required=True, readonly=False)
-    loans_not_returned = fields.Char(string='Préstamos non devoltos', compute='loans_not_returned_calc')
+    loans_not_returned = fields.Char(string='Préstamos activos', compute='loans_not_returned_calc')
     loans_returned = fields.Char(string='Préstamos devoltos', compute='loans_returned_calc')
 
     #conta o número de prstamos non devoltos
