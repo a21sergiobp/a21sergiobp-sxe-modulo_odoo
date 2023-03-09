@@ -5,7 +5,7 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Prestamos pádel" id="loans_base_menu" />
+    <menuitem name="Préstamos pádel" id="loans_base_menu" />
     <menuitem name="Material" id="loans_menu_root" parent="loans_base_menu"
         action="material_menu_action" />
 
@@ -38,8 +38,10 @@
         <field name="model">loans.material</field>
         <field name="arch" type="xml">
             <kanban default_group_by="state">
+                <field name="id"/>
                 <field name="name"/>
                 <field name="description"/>
+                <field name="available"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_content">
@@ -52,7 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="oe_kanban_primary_right">
-                                    <button type="button" class="oe_kanban_action oe_kanban_edit">
+                                    <button name="Editar" type="button" class="oe_kanban_action oe_kanban_edit">
                                         Edit
                                     </button>
                                 </div>

@@ -17,9 +17,11 @@
             <tree>
                 <field name="name" />
                 <field name="dni" />
-                <field name="birthDate"/>
-                <field name="email"/>
-                <field name="phone"/>
+                <field name="birthDate" />
+                <field name="email" />
+                <field name="phone" />
+                <field name="loans_not_returned" />
+                <field name="loans_returned" />
             </tree>
         </field>
     </record>
@@ -31,11 +33,11 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="name" editable="top"/>
+                    <field name="name" editable="top" />
                     <field name="dni" />
-                    <field name="birthDate"/>
-                    <field name="email"/>
-                    <field name="phone"/>
+                    <field name="birthDate" />
+                    <field name="email" />
+                    <field name="phone" />
                     <field name="loans" />
                 </group>
             </form>

@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 import logging
-from datetime import datetime, timedelta
 
 from odoo import models, fields, api
-from odoo.exceptions import UserError
 from odoo.tools.translate import _
-from lxml import etree
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +19,28 @@ class LoansCliente(models.Model):
     loans = fields.One2many('loans.loan', 'client_name',string='Prestamos', readonly=True)
     email = fields.Char(related='partner_id.email', string='Correo electrónico', readonly=False)
     phone = fields.Char(related='partner_id.phone', string='Teléfono', required=True, readonly=False)
+    loans_not_returned = fields.Char(string='Préstamos non devoltos', compute='loans_not_returned_calc')
+    loans_returned = fields.Char(string='Préstamos devoltos', compute='loans_returned_calc')
+
+    #conta o número de prstamos non devoltos
+    @api.depends('loans.returned')
+    def loans_not_returned_calc(self):
+        for record in self:
+            count = 0
+            for loan in record.loans:
+                if loan.returned==False:
+                    count += 1
+        record.loans_not_returned = str(count)
+
+    #conta o número de prstamos devoltos
+    @api.depends('loans.returned')
+    def loans_returned_calc(self):
+        for record in self:
+            count = 0
+            for loan in record.loans:
+                if loan.returned:
+                    count += 1
+        record.loans_returned = str(count)
 
     #Cando creamos un rexistro engadimos os valores no modelo res.partner tamén
     @api.model
@@ -44,3 +63,4 @@ class LoansCliente(models.Model):
                 partner_vals['phone'] = vals['phone']
             self.partner_id.write(partner_vals)
         return result
+    

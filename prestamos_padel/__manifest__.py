@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Prestamos pádel",
+    'name': "Préstamos pádel",
 
     'summary': """
-        Modulo para prestamos de material de pádel""",
+        Modulo para préstamos de material de pádel""",
 
     'description': """
         Modulo no que poderás xestionar material para prestar.
