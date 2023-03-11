@@ -1,6 +1,6 @@
 # Modulo de xestión de préstamos de material
 ## Modelos
-O modulo conta con tres modelos (material, cliente, e préstamo). O modelo material ten campos simples e relacionais. Cliente extende do modelo res.partner por delegación e ten, como o anterior, campos simples e relacionais, e por último o modelo Préstamo, co cal relacionamos materiais e clientes.
+O modulo conta con tres modelos (material, cliente, e préstamo). O modelo material ten campos simples e relacionais. Cliente extende do modelo res.partner por delegación, e ten, como o anterior, campos simples e relacionais, e por último o modelo Préstamo, co cal relacionamos materiais e clientes.
 
 ## Interface
 Poderemos ver un menú con tres campos, que teñen asociadas unhas vistas básicas, estes son Material, Cliente e Prestamo. Cliente e prestamo están compostos por unha vista de árbore e unha vista de formulario, mentres que o material está composto por unha vista kanban e unha vista formulario.
