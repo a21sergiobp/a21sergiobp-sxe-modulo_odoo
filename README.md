@@ -1,13 +1,13 @@
-# Modulo de xestión de préstamos de material
+# Módulo de xestión de préstamos de material
 ## Modelos
-O modulo conta con tres modelos (material, cliente, e préstamo). O modelo material ten campos simples e relacionais. Cliente extende do modelo res.partner por delegación, e ten, como o anterior, campos simples e relacionais, e por último o modelo Préstamo, co cal relacionamos materiais e clientes.
+O módulo conta con tres modelos (material, cliente, e préstamo). O modelo material ten campos simples e relacionais. Cliente extende do modelo res.partner por delegación, e ten, como o anterior, campos simples e relacionais, e por último o modelo Préstamo, co cal relacionamos materiais e clientes.
 
 ## Interface
 Poderemos ver un menú con tres campos, que teñen asociadas unhas vistas básicas, estes son Material, Cliente e Prestamo. Cliente e prestamo están compostos por unha vista de árbore e unha vista de formulario, mentres que o material está composto por unha vista kanban e unha vista formulario.
 En estas vistas mostranse diversos campos que nos dan información sobre os rexistros. 
 
 ## Funcionamento
-Este modulo permite crear clientes e materiais, e asocialos para saber que cliente usa o material, que material está dispoñible e cal no.
+Este módulo permite crear clientes e materiais, e asocialos para saber que cliente usa o material, que material está dispoñible e cal no.
 
 ### Funcionamento xeral
 Cando creamos un préstamo debemos asocialo con un cliente e un material. O material deixa de estar dispoñible facendo que non se poida crear outro prestamo con el ate que este se devolva. Tamén se controlan outras restriccións como que non se poida borrar un prestamo que aínda non se devolveu, ou que un prestamo xa devolto non se poida devolver outra vez.
