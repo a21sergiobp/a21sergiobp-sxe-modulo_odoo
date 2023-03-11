@@ -68,12 +68,3 @@ class LoansMaterial(models.Model):
     def delete_material(self):
         self.ensure_one()
         self.unlink()
-        
-    def crear_material(self):
-        valor_material = {
-            'name': 'Material Exemplo',
-            'description': 'Descrición de exemplo',
-            'state': 'disponible',
-        }
-        record = self.env['loans.material'].create(valor_material)
-        return True

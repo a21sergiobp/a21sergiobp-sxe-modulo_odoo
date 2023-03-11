@@ -3,7 +3,7 @@ import logging
 
 from odoo import models, fields, api
 from odoo.tools.translate import _
-from datetime import date
+from odoo.exceptions import UserError
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +30,7 @@ class LoansCliente(models.Model):
             for loan in record.loans:
                 if loan.returned==False:
                     count += 1
-        record.loans_not_returned = str(count)
+            record.loans_not_returned = str(count)
 
     #conta o número de prstamos devoltos
     @api.depends('loans.returned')
@@ -40,7 +40,7 @@ class LoansCliente(models.Model):
             for loan in record.loans:
                 if loan.returned:
                     count += 1
-        record.loans_returned = str(count)
+            record.loans_returned = str(count)
 
     #Cando creamos un rexistro engadimos os valores no modelo res.partner tamén
     @api.model
@@ -63,4 +63,20 @@ class LoansCliente(models.Model):
                 partner_vals['phone'] = vals['phone']
             self.partner_id.write(partner_vals)
         return result
+    
+    def crear_exemplos(self):
+        if len(self) > 1:
+            raise UserError(_('Selecciona un só cliente'))
 
+        material = self.env['loans.material'].create({
+            'name': 'Exemplo de material',
+            'description': 'Exemplo de descrición',
+            'available': True,
+            'state': 'disponible'
+        })
+        loan = self.env['loans.loan'].create({
+            'client_name': self.id,
+            'material_name': material.id,
+            'state': 'prestado'
+        })
+        return loan

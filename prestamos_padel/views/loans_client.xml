@@ -15,6 +15,9 @@
         <field name="model">loans.client</field>
         <field name="arch" type="xml">
             <tree>
+                <header>
+                    <button name="crear_exemplos" string="Crear material e prestamo" type="object" class="oe_highlight"/>
+                </header>
                 <field name="name" />
                 <field name="dni" />
                 <field name="birthDate" />
