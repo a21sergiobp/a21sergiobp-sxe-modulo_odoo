@@ -3,7 +3,7 @@
     'name': "Préstamos pádel",
 
     'summary': """
-        Modulo para préstamos de material de pádel""",
+        Módulo para préstamos de material de pádel""",
 
     'description': """
         Modulo no que poderás xestionar material para prestar.
